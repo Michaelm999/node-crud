@@ -79,7 +79,7 @@ app.get('/gods/:id', function(req, res) {
 app.post('/gods', function(req, res) {
     God.create(req.body, function(err, savedGod) {
       if(err) return console.log(err)
-      res.json({message: "God saved!", robot: savedGod})
+      res.json({message: "God saved!", god: savedGod})
     })
 })
 
@@ -87,7 +87,7 @@ app.post('/gods', function(req, res) {
 app.patch('/gods/:id', function(req, res) {
   God.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, updatedGod) {
     if(err) return console.log(err)
-    res.json({message: "Diety updated!", robot: updatedGod})
+    res.json({message: "Diety updated!", god: updatedGod})
   })
 })
 
@@ -95,11 +95,9 @@ app.patch('/gods/:id', function(req, res) {
 app.delete('/gods/:id', function(req, res) {
   God.findByIdAndRemove(req.params.id, function(err, deletedGod) {
     if(err) return console.log(err)
-    res.json({message: "God Smited...", robot: deletedGod})
+    res.json({message: "God Smited...", god: deletedGod})
   })
 })
-
-
 
 
 
